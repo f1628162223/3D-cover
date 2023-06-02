@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			user-select: none;
+			text-decoration: none;
+		}
+
+		html {
+			/* background-color: #333; */
+		}
+
+		.card-box {
+			width: 100vw;
+			height: 100vh;
+			min-height: 150px;
+			position: flex;
+			top: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			color: #fff;
+			transition: 1s;
+			overflow: hidden;
+			z-index: 2;
+			transform: perspective(500px) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0);
+		}
+
+		.card-box.active {
+			width: 80vw;
+			height: 80vh;
+			top: 10vh;
+			left: 10vw;
+			border-radius: 10px;
+			transform: perspective(500px) translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(8deg) rotateZ(0);
+		}
+
+		.card-box .head,
+		.card-box .main,
+		.card-box .footer {
+			padding: 50px 80px;
+			display: flex;
+			align-items: center;
+
+		}
+
+		.card-box .head {
+			height: 80px;
+			justify-content: space-between;
+
+		}
+
+		.card-box .head .on-off {
+			width: 40px;
+			height: 40px;
+			background: url('/菜单.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+
+		.card-box .head .on-off.active {
+			background: url('/关闭小.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		.card-box .head .on-off:hover {
+			animation: on-off 1s infinite
+		}
+
+		.card-box .main {
+			width: 50%;
+			flex-wrap: wrap;
+		}
+
+		.card-box .main .main-title {
+			font-size: 35px;
+			margin-bottom: 30px;
+		}
+
+		.card-box .main .main-content {
+			font-size: 15px;
+		}
+
+		.card-box .footer {
+			height: 100px;
+		}
+
+		.card-box .footer img {
+			width: 30px;
+			margin-right: 30px;
+		}
+
+		.card-box video {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: -2;
+			object-fit: fill;
+		}
+
+		.card-box video.active {
+			z-index: -1;
+		}
+
+
+		/* 菜单列表 */
+		.menu-list {
+			position: fixed;
+			right: 0px;
+			top: 0;
+			width: 10vw;
+			height: 100vh;
+			/* z-index: -1; */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			z-index: 0;
+		}
+
+		.menu-list div {
+			margin-bottom: 25px;
+			border: 1px solid #4e6ef2;
+			border-radius: 20px;
+			padding: 5px 25px;
+			cursor: pointer;
+			color: #4e6ef2;
+		}
+
+		@keyframes on-off {
+
+			0%,
+			100% {
+				transform: scale(1);
+			}
+
+			50% {
+				transform: scale(1.5);
+
+			}
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="card-box">
+		<div class="head">
+			<div> FHH </div>
+			<div class="on-off"> </div>
+		</div>
+		<div class="main">
+			<div class="main-title"></div>
+			<div class="main-content"></div>
+		</div>
+		<div class="footer">
+			<img src="./美团.svg" alt="美团">
+			<img src="./江苏银行logo.svg" alt="江苏银行logo">
+			<img src="./抖音.svg" alt="抖音">
+			<img src="./哔哩哔哩.svg" alt="哔哩哔哩">
+		</div>
+
+
+		<video class="active" autoplay muted loop src="./pexels-anastasia-shuraeva-4513197-3840x2160-24fps.mp4"></video>
+		<video autoplay muted loop src="./pexels-german-korb-5644053-2562x1440-60fps.mp4"></video>
+		<video autoplay muted loop src="./pexels-nikunj-patel-5117938-1920x1080-24fps.mp4"></video>
+		<video autoplay muted loop src="./pexels-ricky-esquivel-2040063-1920x1080-24fps.mp4"></video>
+	</div>
+	<div class="menu-list">
+		<div>春季</div>
+		<div>夏季</div>
+		<div>秋季</div>
+		<div>冬季</div>
+	</div>
+</body>
+
+
+<script>
+
+
+	const seasonData = [
+
+		{
+			title: '春天',
+			content: '春季，冰雪逐渐融化，万物开始复苏。草木绿意盎然，细嫩的枝丫上挂满了新芽，清新的气息扑鼻而来。随着温度的升高，春雨不时地降临，滋润着每一个角落，让大自然变得更加生机勃勃。温暖的阳光透过树枝洒下，温柔的风儿轻拂着面颊，给人们带来了一份柔软和舒适。春季是一个充满活力和希望的季节，人们在这里感受到了生命的力量和无限的可能性。'
+		},
+
+		{
+			title: '夏天',
+			content: '夏季，阳光普照，万物茂盛。热浪滚滚，草木葱茏，花开满枝头，芳香四溢。炎炎夏日，人们穿上轻便的衣服，走在热闹的街头巷尾，感受到夏日的热情和活力。清凉的海风吹拂着脸庞，海浪拍打着沙滩，让人心情愉悦。夏季也是各种水上活动的好时节，人们在游泳池、海滩、湖泊中畅游，享受着清凉和快乐。夏季充满了活力和激情，让人们感受到生命的热情和无限的可能性。'
+		},
+
+		{
+			title: '秋天',
+			content: '秋季，天高云淡，气爽风凉。金色的阳光洒在枯黄的树叶上，熠熠生辉，落叶随风飘舞，漫天飞舞，营造出一种梦幻般的景象。收获的季节也在秋天到来，农民们收割着丰收的果实和庄稼，欣喜的笑容洋溢在脸庞上。秋季还是一个食欲大增的季节，各种美食如柿子、石榴、核桃、苹果等都成熟了，让人们的口感享受到了丰盛的美食盛宴。秋季是一个温暖而丰收的季节，让人们感受到了生命的丰盈和无限的感恩。'
+		},
+
+		{
+			title: '冬天',
+			content: '冬季，天寒地冻，白雪皑皑。大地被白雪覆盖，草木凋零，一片寂静。冷风呼啸，让人感到刺骨的寒冷，但同时也给人带来一份清新和宁静。在这个季节里，人们穿上厚厚的衣服，围上围巾，戴上手套，享受着雪的乐趣，堆雪人、打雪仗、滑雪、溜冰，让人们感受到冬季的欢乐和活力。冬季也是一个温馨的季节，家庭成员聚在一起，享受着热乎乎的火锅、烤鸭等美食，感受到家庭的温暖和亲情的力量。冬季虽然寒冷，但也充满了欢乐和温馨，让人们感受到生命的活力和无限的温暖。'
+		},
+	]
+
+	const on_off = document.querySelector('.on-off')
+	const catd_box = document.querySelector('.card-box')
+	const main_title = document.querySelector('.main .main-title')
+	const main_content = document.querySelector('.main .main-content')
+	const videos = document.querySelectorAll('.card-box video')
+	const menu_button = document.querySelectorAll('.menu-list div')
+	main_title.innerHTML = seasonData[0].title
+	main_content.innerHTML = seasonData[0].content
+
+	on_off.addEventListener('click', () => {
+		on_off.classList.toggle('active')
+		catd_box.classList.toggle('active')
+	})
+
+	for (let i = 0; i < menu_button.length; i++) {
+		menu_button[i].addEventListener('click', () => {
+			videos.forEach((item, index) => {
+				videos[index].classList.remove('active')
+			})
+			videos[i].classList.add('active')
+			main_title.innerHTML = seasonData[i].title
+			main_content.innerHTML = seasonData[i].content
+		})
+	}
+
+
+
+
+</script>
+
+</html>
